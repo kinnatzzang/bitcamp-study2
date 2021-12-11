@@ -13,7 +13,10 @@ public class Exam0431 {
       }
       System.out.println();
     }
+    System.out.println("----------");
   }
+
 }
+
 
 

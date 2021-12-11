@@ -19,26 +19,26 @@ public class Exam0140 {
     // 여러 문장을 실행할 때 블록으로 묶어야 한다.
     if (age >= 20) {
       System.out.println("--------------");
-      System.out.println("성인입니다.");
+      System.out.println("성인입니다.3");
     }
     else {
       System.out.println("--------------");
-      System.out.println("미성년입니다.");
+      System.out.println("미성년입니다.3");
     }
 
     // 한 문장일 때는 블록으로 묶지 않아도 된다.
     if (age >= 19) { // OK!
-      System.out.println("성인입니다.");
+      System.out.println("성인입니다.4");
       System.out.println("--------------------------");
     }
     else
-      System.out.println("미성년입니다.");
+      System.out.println("미성년입니다.4");
 
     // 한 문장일 때는 블록으로 묶지 않아도 된다.
     if (age >= 19)
-      System.out.println("성인입니다.");
+      System.out.println("성인입니다.5");
     else {
-      System.out.println("미성년입니다.");
+      System.out.println("미성년입니다.5");
       System.out.println("--------------------------");
     }
   }
