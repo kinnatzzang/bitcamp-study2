@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>지브리</title>
+</head>
+<body>
+<h1>지브리</h1>
+<a href="form.html">지브리작품모음집</a>
+<table id="x-my1-table" border="1">
+<thead>
+  <tr>
+    <th>제목</th>
+    <th>연도</th>
+    <th>소속</th>
+  </tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+
+<script type="text/javascript">
+  var tbody = document.querySelector("#x-my1-table tbody")
+
+  fetch("/my1/list")
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(my1s) {
+      console.log(my1s);
+      for (var my1 of my1s) {
+        var values = my1.split(",");
+        var tr = document.createElement("tr");
+        tr.innerHTML = `<td><a href="view.html?title=${values[0]}">${values[0]}</a></td>
+        <td>${values[1]}</td>
+        <td>${values[2]}</td>
+        <td>${values[3]}</td>`;
+        tbody.appendChild(tr);
+      }
+    });
+</script>
+
+
+
+
+
+
+
+
+
+</body>
+</html>
