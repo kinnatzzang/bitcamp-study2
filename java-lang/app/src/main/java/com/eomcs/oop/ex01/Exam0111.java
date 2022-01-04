@@ -29,6 +29,8 @@ public class Exam0111 {
     System.out.printf("%s: %d, %d, %d, %d, %.1f\n", name, kor, eng, math, sum, aver);
   }
 }
+
+
 // 만약 과목이 12개라면 어떨것 같아?
 // => 음.. 그건 좀.. 값이 많아지면, 메서드의 파라미터가 많아지고,
 // => 어... 메서드 선언할 때 복잡할 것 같은데!

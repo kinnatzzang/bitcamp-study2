@@ -56,8 +56,10 @@ public class BoardController {
       return 0;
     }
     return boardList.remove(index) == null ? 0 : 1;
+    //없으면? 참이면 0 : 거짓이면 1; 
   }
 }
+// ex. 5 > 1 ? true : false 
 
 
 
