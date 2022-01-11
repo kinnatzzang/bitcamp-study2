@@ -3,14 +3,26 @@ package com.eomcs.mylist.controller;
 import java.sql.Date;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import com.eomcs.io.FileWriter2;
 import com.eomcs.mylist.domain.Board;
 import com.eomcs.util.ArrayList;
 
 @RestController 
 public class BoardController {
 
-  // Board 객체 목록을 저장할 메모리를 준비한다.
   ArrayList boardList = new ArrayList();
+
+  public BoardController() throws Exception {
+    System.out.println("BoardController() 호출됨!");
+    com.eomcs.io.FileReader2 in = new com.eomcs.io.FileReader2("boards.csv");
+
+    String line;
+    while ((line = in.readLine()).length() != 0) { // 빈 줄을 리턴 받았으면 읽기를 종료한다.
+      boardList.add(Board.valueOf(line)); 
+    }
+
+    in.close();
+  }
 
   @RequestMapping("/board/list")
   public Object list() {
@@ -56,10 +68,22 @@ public class BoardController {
       return 0;
     }
     return boardList.remove(index) == null ? 0 : 1;
-    //없으면? 참이면 0 : 거짓이면 1; 
+  }
+
+  @RequestMapping("/board/save")
+  public Object save() throws Exception {
+    FileWriter2 out = new FileWriter2("boards.csv"); // 따로 경로를 지정하지 않으면 파일은 프로젝트 폴더에 생성된다.
+
+    Object[] arr = boardList.toArray();
+    for (Object obj : arr) {
+      Board board = (Board) obj;
+      out.println(board.toCsvString());
+    }
+
+    out.close();
+    return arr.length;
   }
 }
-// ex. 5 > 1 ? true : false 
 
 
 

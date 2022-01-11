@@ -2,16 +2,28 @@ package com.eomcs.mylist.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import com.eomcs.io.FileWriter2;
 import com.eomcs.mylist.domain.Contact;
 import com.eomcs.util.ArrayList;
 
 @RestController 
 public class ContactController {
 
-  // Contact 객체 목록을 저장할 메모리 준비
-  // => Object[] list = new Object[5];
-  // => int size = 0;
-  ArrayList contactList = new ArrayList();
+  ArrayList contactList;
+
+  public ContactController() throws Exception {
+    contactList = new ArrayList();
+    System.out.println("ContactController() 호출됨!");
+
+    com.eomcs.io.FileReader2 in = new com.eomcs.io.FileReader2("contacts.csv");
+
+    String line;
+    while ((line = in.readLine()).length() != 0) { // 빈 줄을 리턴 받았으면 읽기를 종료한다.
+      contactList.add(Contact.valueOf(line)); // 파일에서 읽은 한 줄의 CSV 데이터로 객체를 만든 후 목록에 등록한다.
+    }
+
+    in.close();
+  }
 
   @RequestMapping("/contact/list")
   public Object list() {
@@ -56,6 +68,20 @@ public class ContactController {
     return 1;
   }
 
+  @RequestMapping("/contact/save")
+  public Object save() throws Exception {
+    FileWriter2 out = new FileWriter2("contacts.csv"); // 따로 경로를 지정하지 않으면 파일은 프로젝트 폴더에 생성된다.
+
+    Object[] arr = contactList.toArray();
+    for (Object obj : arr) {
+      Contact contact = (Contact) obj;
+      out.println(contact.toCsvString());
+    }
+
+    out.close();
+    return arr.length;
+  }
+
   int indexOf(String email) {
     for (int i = 0; i < contactList.size(); i++) {
       Contact contact =  (Contact) contactList.get(i);
@@ -66,4 +92,7 @@ public class ContactController {
     return -1;
   }
 }
+
+
+
 
