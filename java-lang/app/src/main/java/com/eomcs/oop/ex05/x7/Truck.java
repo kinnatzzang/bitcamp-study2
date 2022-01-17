@@ -21,7 +21,7 @@ public class Truck extends Car{
 
 
   public void stopping() {
-    System.out.println("시동꺼!");
+    System.out.println("시동!");
   }
 
   public void go() {
