@@ -19,9 +19,9 @@ public class Exam0140 {
   // - 어느 수퍼 인터페이스의 메서드를 상속 받느냐에 따라
   //   동작이 달라지기 때문이다.
   //
-  //  interface ProtocolC extends ProtocolA, ProtocolB { // 컴파일 오류!
-  //    void rule3();
-  //  }
+  //    interface ProtocolC extends ProtocolA, ProtocolB { // 컴파일 오류!
+  //      void rule3();
+  //    }
 
   public static void main(String[] args) {
   }

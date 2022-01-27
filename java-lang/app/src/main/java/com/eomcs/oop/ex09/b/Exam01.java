@@ -35,7 +35,7 @@ abstract class MyInterfaceImpl implements MyInterface {
 
   // public 보다 접근 범위를 좁힐 수는 없다.
   @Override
-  //  private void m2() {}  // 컴파일 오류!
+  // private void m2() {}  // 컴파일 오류!
   //  protected void m2() {} // 컴파일 오류!
   //  void m2() {} // 컴파일 오류!
   public void m2() {} // OK!
