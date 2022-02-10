@@ -29,7 +29,7 @@ public class Exam0210 {
 
   // 오류를 던진다면 반드시 메서드 선언부에 어떤 오류를 던지는지 선언해야 한다.
   // => 메서드 호출자에게 알려주는 것이다.
-  static void m1() throws Throwable {
+  static void m1() throws Throwable  {
     throw new Throwable(); // OK!
     // 예외를 던질 때 Throwable 클래스를 직접 사용하지 말라!
     // 그 하위 클래스를 사용하라.
