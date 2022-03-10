@@ -10,13 +10,13 @@ public interface ContactDao {
 
   void insert(Contact contact) throws Exception;
 
-  Contact findByEmail(int no);
+  Contact findByEmail(String email);
 
-  int update(int no, Contact contact) throws Exception;
+  int update(Contact contact) throws Exception;
 
-  int delete(int no) throws Exception;
-
+  int delete(String email) throws Exception;
 }
+
 
 
 

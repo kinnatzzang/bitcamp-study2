@@ -15,8 +15,8 @@ public interface BookDao {
   int update(int no, Book book) throws Exception;
 
   int delete(int no) throws Exception;
-
 }
+
 
 
 
